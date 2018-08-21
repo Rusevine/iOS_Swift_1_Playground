@@ -19,19 +19,19 @@ myDictionary["Principal"] = 1
  - Experiment:
  Try creating an array and dictionary using `'let'` vs `'var'` then try adding something to them. What do you notice? For the array, you can use a method called 'append' to add something to it.
  */
-
+//var allows us to append but let does not
 
 /*:
  - Experiment:
  Try creating an empty array with an explicit type `[type]`. What happens when you add a value that isn't the same type?
  */
-
+// the compiler would not allow us to do so
 
 /*:
  - Experiment:
  Try creating an empty dictionary with an explicit type. `[keyType: valueType]`
  */
-
+var dict : [String:Double]
 
 /*:
  - Experiment:
@@ -43,7 +43,14 @@ myDictionary["Principal"] = 1
  - reverse
  - count
  */
+var array = [ 1,2,3,4,5,6]
 
+array.append(7)
+array.insert(10, at: 3)
+array.remove(at: 2)
+//array.removeAll()
+array.reverse()
+array.count
 
 /*:
  - Experiment:
@@ -52,7 +59,10 @@ myDictionary["Principal"] = 1
  - isEmpty
  - count
  */
-
+var dict2 = ["hello" : 5,"hey" :3 ,"hi" : 2]
+dict2.removeValue(forKey: "hello")
+dict2.isEmpty
+dict2.count
 
 /*:
  - Callout(Challenge):
@@ -60,7 +70,11 @@ myDictionary["Principal"] = 1
  
     Finally, print out each person's name from the array using their index and string interpolation
 */
-
+var names = [String]()
+names.append("John")
+names.append("Karen")
+names.append("Jane")
+print("\(String(describing: names.index(of: "John"))):\(names[0]), \(String(describing: names.index(of: "Karen"))):\(names[1]), \(String(describing: names.index(of: "Jane"))):\(names[2])")
 
 /*:
  - Callout(Challenge):
@@ -74,6 +88,8 @@ myDictionary["Principal"] = 1
  
     On the next line, add this last person's info: Bob - $45000
  */
-
+var salary = ["John": 50000,"Jane": 70000,"Karen": 62000]
+salary["Bob"] = 45000
+salary
 
 //: [Next](@next)

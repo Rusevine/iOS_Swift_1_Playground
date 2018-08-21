@@ -23,14 +23,17 @@ namedPersonTuple.age
  - Experiment:
  Try creating your own tuple. Mix in different variable types and try mixing some parameters with names and some without. Does it still work?
  */
-
-
+var me = ("Wiljay", "Flores", 24)
+me.0
+me.1
+me.2
 /*:
  - Experiment:
  Try nesting tuples within one another. Create a tuple and add a tuple as one of its items.
  */
 
-
+var meTuple = ("hello",me,"World")
+meTuple.1.0
 /*:
  - Experiment:
  We took a look at tuple earlier during the 'Loops' section. Can you tell where it is being used? Experiment with the tuple names and even change up the interesting numbers to see what's possible.
@@ -42,7 +45,7 @@ let interestingNumbers = [
     "Square": [1, 4, 9, 16, 25],
 ]
 for (kind, numbers) in interestingNumbers {
-    
+    print("\(kind) \(numbers)")
 }
 
 /*:
@@ -52,7 +55,13 @@ for (kind, numbers) in interestingNumbers {
 To test: call your new function with eligable true and false, and print the two values
  (Hint: Use optional return value and conditional unwrapping)
  */
-
+func info(name: String, age: Int, eligable: Bool) -> (name: String?, age: Int?) {
+  if eligable == true {
+    return (name,age)
+  } else {
+    return (nil,nil)
+  }
+}
 
 /*:
  ## Enums
@@ -63,24 +72,30 @@ To test: call your new function with eligable true and false, and print the two 
  */
 
 enum Months: Int{
-    case January = 1
+    case January
     case Feburary
     case March
     case April
-    case May, June, July, August
+    case May, June, July, August, September, October, November, December
     //...
     
     func abbreviatedStringForm() -> String {
         switch self {
             default:
-                return ""
+              return String(String(describing: self).prefix(3))
         }
     }
+  func monthDifference(month: Months) -> Int {
+   return month.rawValue - self.rawValue
+  }
 }
 
 //: Now we can represents the months in our program with easy readiablity and minimal mistakes.
 let januaryMonth = Months.January
 let marchMonth = Months.March
+let augustMonth = Months.August.rawValue
+
+
 
 /*:
  - Experiment:
@@ -88,19 +103,21 @@ let marchMonth = Months.March
  \
 Try removing the '= 1' from the Months enum. Now what is different?
  */
-
+  //rawValue shows their enumerated value
+  // the first value begins at 0 rather than 1
 
 /*:
  - Experiment:
  Finish the rest of the months for our `Months` enum. Then take a look at `abbreviatedStringForm()` function. Complete this function so that it returns the abbreviated form of the desired month as a String. ie: calling `Months.January.abbreviatedStringForm()` returns "Jan".
  */
-
+String(describing: Months.January).prefix(3)
+Months.November.abbreviatedStringForm()
 
 /*:
  - Experiment:
  Write a function within the enum that compares two months and determines how many months are they apart. For example: Comparing January to March would return to me '2', because January and March are two months apart.
  */
-
+januaryMonth.monthDifference(month: marchMonth)
 
 /*:
  - Callout(Challenge):

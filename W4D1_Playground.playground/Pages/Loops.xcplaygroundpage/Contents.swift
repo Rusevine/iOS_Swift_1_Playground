@@ -29,24 +29,48 @@ for i in 2...5 {
  - Experiment:
  What's the difference between `2...5` vs `2..<5`?
  */
-
+//2...5 is from 2 up until 5 2..<5 is from two until the number before 5
 
 /*:
  - Experiment:
   Use a ranged for loop to search through the 'pets' array above for the word 'pig' and print out its index.
  */
-
+for i in 0...3 {
+  if pets[i] == "pig" {
+    print("\(i):\(pets[i])")
+  }
+}
 
 /*:
  - Experiment:
  Create an array of random numbers of your choosing then make a for loop that adds 1 to each number.
  */
+var numArray = [1,2,3,4,5,6,7]
 
+for i in 0..<numArray.count {
+  numArray[i] = numArray[i]+1
+}
+numArray
 
 /*:
  - Experiment:
  Take a look at the example below. Modify the code so that it searches for both the largest and smallest number. Then print out the result.
  */
+var lowest : Int? = numArray.first
+for num in numArray {
+  if num < lowest! {
+    lowest = num
+  }
+}
+print("\(lowest!)")
+
+var largest2 : Int? = numArray.first
+for num in numArray {
+  if num > largest2! {
+    largest2 = num
+  }
+}
+print("\(largest2!)")
 
 /*:
  Hint: Use an `_` so that you can avoid making another unecessary variable for the iteration value.
@@ -73,8 +97,14 @@ print(largest)
  Given a number `N`, from 0 to `N`, add up all the odd numbers and print out the result.
  ie: N = 5, 1+3+5 = 9
  */
-
-
+var N = 9
+var total : Int = 0
+for num in 0...N {
+  if num % 2 != 0{
+    total = total + num
+  }
+}
+print("\(total)")
 /*:
  - Callout(Challenge):
  Given the following array of numbers, determine the frequency of each number using a for loop.
@@ -90,4 +120,13 @@ print(largest)
 
 let numberArray = [1, 4, 5, 5, 5, 3, 2, 1, 4, 2, 2, 2, 1]
 
+for i in 1...5 {
+  var count = 0
+  for number in numberArray{
+    if number == i {
+      count = count + 1
+    }
+  }
+  print("\(i): occurs \(count) times")
+}
 //: [Next](@next)

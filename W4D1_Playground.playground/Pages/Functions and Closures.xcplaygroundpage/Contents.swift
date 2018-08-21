@@ -42,23 +42,50 @@ func sayHello(toPerson: String) -> String{
  - Experiment:
  Try calling all of the functions above. They all have the same function name, but the compiler doesn't complain. Can you think of why this might be?
  */
-
+//it cant tell its the same function until you call it
 /*:
  - Experiment:
  Try creating your own function that accepts two parameters of any type you choose. Have the function print out the two parameters and test your function.
  */
+func fullName (first: String, last: String){
+  print("\(first) \(last)")
+}
 
+fullName(first: "Wiljay", last: "Flores")
 /*:
  - Callout(Challenge):
  Create four separate functions to add, subtract, multiple, and divide with two parameters given to it and returns a number result. Try testing each one afterwards.
  
  */
+func add (x: Int, y: Int) -> Int {
+  return x + y
+}
+func subtract (x: Int, y: Int) -> Int {
+  return x - y
+}
+func divide (x: Int, y: Int) -> Int {
+  return x / y
+}
+func multiply (x: Int, y: Int) -> Int {
+  return x * y
+}
 
+add(x: 2, y: 3)
+subtract(x: 7, y: 3)
+divide(x: 6, y: 2)
+multiply(x: 5, y: 10)
 /*:
  - Callout(Challenge):
  Create your own 'reverse' function that takes in an array of Int, reverses the order of the array, and returns the newly reversed array of Int. The array class has its own 'reverse' method, but do not use it for this challenge.
  */
-
+func reverseArray (array: [Int]) -> [Int]{
+  var reverseArray = [Int]()
+  for num in array {
+    reverseArray.insert(num, at: 0)
+  }
+  return reverseArray
+}
+reverseArray(array: [1,2,3,4,5,6])
 /*:
  ## Closures
  
@@ -117,19 +144,35 @@ var sayHelloClosureWithReturn = { (name: String) -> String in
  - Experiment:
  Try calling all of the closures above. What do you notice that is different from calling a function?
  */
+sayHelloClosureWithReturn("Wiljay")
+sayHelloClosureToPerson("Joey")
+
 
 /*:
  - Experiment:
  Try creating your own closure that accepts two parameters of any type you choose. Have the closure print out the two parameters and test your closure.
  */
+var answer = { (x: Int, y: Int) -> Int in
+  return x + y
+  
+}
 
+print("\(answer(5,6))")
 /*:
  - Experiment:
  Declare a variable with an explicit closure type: `(String) -> (String)`. This closure type says it takes one parameter of type String and returns a variable of type String.
  */
-
+var name = { (first: String) -> (String) in
+  return first
+}
 /*:
  - Callout(Challenge):
  Create a closure with at least two parameters of your choice and decide whether or not it returns anything. Then create a function that takes in your closure as a parameter and one additional parameter of your choice.
  */
 //: [Next](@next)
+var z = {(x: Int, y: Int) -> Int in
+  return x + y
+}
+
+var ans = multiply(x: 2, y: z(3,7))
+print("\(ans)")
